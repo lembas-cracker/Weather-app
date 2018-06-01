@@ -62,9 +62,9 @@ export class App extends Component {
 }
   render() {
     if (this.state.loading) {
-      (<loadingBar/>).style.display = "block";
+      return <loadingBar/>;
     } else {
-      ( <loadingBar/>).style.display = "none";
+      return null;
     }
 
     return (
