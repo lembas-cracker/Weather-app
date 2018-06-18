@@ -1,15 +1,16 @@
 import React from 'react'
 
+
 const Form = props => (
-  <form onSubmit={props.getWeather}>
+  <form onSubmit={props.getWeather} className='weather-form'>
     <input
       type='text'
       name='country'
       placeholder='Country...'
-      className='col-4'
+      className='col-md-4 col-5 string1'
     />
-    <input type='text' name='city' placeholder='City...' className='col-4' />
-    <button>Get Weather</button>
+    <input type='text' name='city' placeholder='City...' className='col-md-4 col-5 string2' />
+    <button className="getButton">Get Weather</button>
   </form>
 )
 

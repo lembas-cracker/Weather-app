@@ -1,6 +1,6 @@
 import ProgressBar from 'progressbar.js'
 
-function loadingBar () {
+function LoadingBar() {
   const bar = new ProgressBar.Circle('#loading-bar', {
     color: '#FFEA82',
     trailColor: '#eee',
@@ -18,4 +18,4 @@ function loadingBar () {
   bar.animate(1.0)
 }
 
-export default loadingBar
+export default LoadingBar
