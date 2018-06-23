@@ -4,22 +4,24 @@
 
 
 .wrapper {
+  min-height: 100vh;
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 .main {
   background: #fff;
   box-shadow: 0px 13px 40px -13px rgba(0,0,0,0.75);
   display: flex;
   flex-direction: row;
-  min-height: 80vh;
+  min-height: 85vh;
 }
 .title-container {
   background: url("img/bg.jpg") center center no-repeat;
   background-size: cover;
   display: flex;
-  flex-direction: column;
   justify-content: center;
+  flex-direction: column;
   color: #000;
 }
 .title-container .app-title {
@@ -29,20 +31,11 @@
   font-family: 'Roboto Slab', serif;
 }
 
-.app-logo {
-  animation: App-logo-spin infinite 20s linear;
-  width: 25%;
-}
-
-.single-container,
-.first-container {
-  cursor: pointer;
-}
-
 .form-container {
   background-color: #273444;
   padding-top: 100px;
   padding-left: 50px;
+  height: 90vh;
 }
 input[type="text"] {
   background-color: transparent;
@@ -56,10 +49,8 @@ input[type="text"] {
   margin-right: 20px;
   font-size: 20px;
 }
-
 input[type="text"] {
     outline: none;
-    /*min-width: 40%;*/
 }
 button {
   border: 0;
@@ -84,7 +75,6 @@ button:active {
   font-weight: 200;
   letter-spacing: 2px;
 }
-
 .weather__key {
   color: #f16051;
   border-bottom: solid 2px rgba(255,255,255,0.06);
@@ -118,17 +108,27 @@ button:active {
   }
 }
 
-@media (max-width: 850px){
+@media (max-width: 767px){
   .main{
-    min-height: 95vh;
-    display: flex;
-    flex-direction: column;
+    min-height: 85%;
+    width: 80%;
+    flex-direction: row;
     align-items: center;
   }
   .title-container {
     background-position: top;
   }
+  .title-container .app-title {
+    padding: 15px;
+    font-size: 35px;
+  }
   .form-container {
     padding-top: 50px;
+    height: auto;
+  }
+}
+@media (min-height: 950px){
+  .main{
+    min-height: 70%;
   }
 }

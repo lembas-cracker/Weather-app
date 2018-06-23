@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import logo from './img/logo.svg'
 import './App.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import countryCodes from './country-codes.json'
@@ -14,25 +13,6 @@ function getCountryCode (country) {
   }
   const countryCode = countryInfo['alpha-2']
   return countryCode
-}
-
-
-let cityList = [];
-fetch(process.env.PUBLIC_URL + "/city.list.json")
-  .then(r => r.json())
-  .then(list => cityList = list);
-
-function getCityId (city, countryCode) {
-  if (!city || !countryCode) {
-    return false
-  }
-  const foundCity = cityList.find(
-    c => caseEqual(c.name, city) && caseEqual(c.country, countryCode)
-  )
-  if (foundCity === undefined) {
-    return false
-  }
-  return foundCity.id
 }
 
 function caseEqual(string1, string2) {
@@ -57,19 +37,17 @@ export class App extends Component {
     const city = e.target.elements.city.value
     const country = e.target.elements.country.value
     const countryCode = getCountryCode(country)
-    const cityId = getCityId(city, countryCode)
-    console.log(cityId, countryCode, city, country);
-    if (cityId) {
+    if (city && countryCode) {
       this.setState({
         loading: true
       })
       const apiCall = await window.fetch(
-        `http://api.openweathermap.org/data/2.5/weather?id=${cityId}&appid=403cb31deec233cc32ad204865bf0e56&units=metric`
+        `https://api.openweathermap.org/data/2.5/weather?q=${city},${countryCode}&appid=403cb31deec233cc32ad204865bf0e56&units=metric`
       )
       const data = await apiCall.json()
       if (data.main) {
         this.setState({
-          temperature: data.main.temp + "°",
+          temperature: data.main.temp,
           city: data.name,
           country: data.sys.country,
           description: data.weather[0].description,
@@ -91,15 +69,15 @@ export class App extends Component {
 
   render() {
     return (
-          <div className='container'>
-           <div className='row justify-content-center no-gutters'>
-           <div className="wrapper">
-            <div className='main'>
-              <div className='col-md-5 title-container'>
+      <div>
+      <div className="wrapper">
+        <div className="main">
+          <div className="container-fluid">
+            <div className="row justify-content-center">
+              <div className='col-md-6 title-container'>
                 <h1 className='app-title text-center'>Know your weather</h1>
-                 <img src={logo} className='app-logo' alt='logo' />
               </div>
-                <div className='col form-container'>
+                <div className='col-md-6 form-container'>
                   <Form getWeather={this.getWeather.bind(this)} />
                   <Weather
                     temperature={this.state.temperature}
@@ -113,6 +91,7 @@ export class App extends Component {
               </div>
               </div>
             </div>
+           </div>
            </div>
     )
   }

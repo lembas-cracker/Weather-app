@@ -11,7 +11,7 @@ const Weather = props => (
     {props.temperature &&
       <p className='weather__key'>
         {' '}Temperature:
-        <span className='weather__value'> {props.temperature} </span>
+        <span className='weather__value'> {Math.round(props.temperature)}° </span>
       </p>}
     {props.description &&
       <p className='weather__key'>

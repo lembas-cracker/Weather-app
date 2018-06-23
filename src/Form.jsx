@@ -7,9 +7,9 @@ const Form = props => (
       type='text'
       name='country'
       placeholder='Country...'
-      className='col-md-4 col-5 string1'
+      className='col-md-5 col-5 string1'
     />
-    <input type='text' name='city' placeholder='City...' className='col-md-4 col-5 string2' />
+    <input type='text' name='city' placeholder='City...' className='col-md-5 col-5 string2' />
     <button className="getButton">Get Weather</button>
   </form>
 )
