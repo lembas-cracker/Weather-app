@@ -4,7 +4,8 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import countryCodes from './country-codes.json'
 import Form from './Form.jsx'
 import Weather from './Weather.jsx'
-import LoadingBar from './LoadingBar.jsx'
+import './Autocomplete.jsx' 
+import PageContainer from './PageContainer.jsx'
 
 function getCountryCode (country) {
   const countryInfo = countryCodes.find(c => caseEqual(c.name, country))
@@ -69,30 +70,16 @@ export class App extends Component {
 
   render() {
     return (
-      <div>
-      <div className="wrapper">
-        <div className="main">
-          <div className="container-fluid">
-            <div className="row justify-content-center">
-              <div className='col-md-6 title-container'>
-                <h1 className='app-title text-center'>Know your weather</h1>
-              </div>
-                <div className='col-md-6 form-container'>
-                  <Form getWeather={this.getWeather.bind(this)} />
-                  <Weather
-                    temperature={this.state.temperature}
-                    city={this.state.city}
-                    country={this.state.country}
-                    description={this.state.description}
-                    error={this.state.error}
-                  />
-                  <div id="loading-bar"></div>
-                </div>
-              </div>
-              </div>
-            </div>
-           </div>
-           </div>
+      <PageContainer>
+        <Form getWeather={this.getWeather.bind(this)} />
+        <Weather
+          temperature={this.state.temperature}
+          city={this.state.city}
+          country={this.state.country}
+          description={this.state.description}
+          error={this.state.error}
+        />
+      </PageContainer>
     )
   }
 }
