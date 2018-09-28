@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css?family=Merriweather:100,200,300,300i,400,400i,700');
+
+.react-autosuggest__suggestions-container {
+  background-color: white;
+  position: fixed;
+  overflow: auto;
+  height: 220px;
+}
+.react-autosuggest__suggestions-list {
+  list-style-type: none;
+  padding: 10px;
+}
+.react-autosuggest__suggestion {
+  font-size: 1.2em;
+  font-family: 'Merriweather', serif;
+  font-weight: 200;
+  padding: 10px;
+}
+.react-autosuggest__suggestion--highlighted {
+  background-color: #edeef0;
+  cursor: pointer;
+}

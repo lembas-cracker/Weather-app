@@ -1,18 +1,69 @@
 import React from 'react'
+import Autosuggest from 'react-autosuggest';
+import './Autocomplete.css';
+
+const getSuggestions = (allSuggestions, value) => {
+  const inputValue = value.trim().toLowerCase();
+
+  return inputValue.length === 0 ? [] : allSuggestions.filter(suggestion =>
+    suggestion.toLowerCase().startsWith(inputValue)
+  );
+};
+
+const renderSuggestion = suggestion => (
+  <div>
+    {suggestion}
+  </div>
+);
 
 export default class Autocomplete extends React.Component {
-  handleChange(event) {
-    
+  constructor() {
+    super();
+
+    this.state = {
+      value: '',
+      suggestions: []
+    };
   }
+
+  onChange = (event, { newValue }) => {
+    this.setState({
+      value: newValue
+    });
+  };
+
+  onSuggestionsFetchRequested = ({ value }) => {
+    this.setState({
+      suggestions: getSuggestions(this.props.possibleValues, value)
+    });
+  };
+
+  onSuggestionsClearRequested = () => {
+    this.setState({
+      suggestions: []
+    });
+  };
+
   render() {
-    return <input 
-      type='text' 
-      className='col-5' 
-      name={this.props.name} 
-      placeholder={this.props.placeholder}
-      
-    />
+    const value = this.state.value;
+    const suggestions = this.state.suggestions;
+
+    const inputProps = {
+      placeholder: this.props.placeholder,
+      value,
+      name: this.props.name,
+      onChange: this.onChange
+    };
+
+    return (
+      <Autosuggest
+        suggestions={suggestions}
+        renderSuggestion={renderSuggestion}
+        getSuggestionValue={suggestion => suggestion}
+        onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
+        onSuggestionsClearRequested={this.onSuggestionsClearRequested}
+        inputProps={inputProps}
+      />
+    );
   }
 }
-
-
