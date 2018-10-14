@@ -1,35 +1,18 @@
 import React, { Component } from 'react'
 import './App.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import countryCodes from './country-codes.json'
 import Form from './Form.jsx'
 import Weather from './Weather.jsx'
-import './Autocomplete.jsx' 
+import './Autocomplete.jsx'
 import PageContainer from './PageContainer.jsx'
-
-function getCountryCode (country) {
-  const countryInfo = countryCodes.find(c => caseEqual(c.name, country))
-  if (countryInfo === undefined) {
-    return false
-  }
-  const countryCode = countryInfo['alpha-2']
-  return countryCode
-}
-
-function caseEqual(string1, string2) {
-  return string1.toUpperCase() === string2.toUpperCase();
-}
+import { getCountryCode } from './location-functions.js'
 
 
 export class App extends Component {
   constructor () {
     super()
     this.state = {
-      temperature: undefined,
-      city: undefined,
-      country: undefined,
-      description: undefined,
-      error: undefined
+      loading: false
     }
   }
 

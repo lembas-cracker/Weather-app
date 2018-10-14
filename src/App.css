@@ -90,6 +90,14 @@ button:active {
 .weather__error {
   color: #fff;
 }
+.weather__icon {
+  background: url('weatherIcons.png') no-repeat;
+  background-size: 240px 240px;
+  display: inline-block;
+  height: 60px;
+  width: 60px;
+  margin-bottom: -10px;
+}
 
 .autocomplete {
   position: relative;
@@ -120,26 +128,18 @@ button:active {
 }
 
 @media (max-width: 767px){
-  .main{
-    min-height: 85%;
-    width: 80%;
-    flex-direction: row;
+  .wrapper{
     align-items: center;
   }
   .title-container {
     background-position: top;
+    height: 30vh;
   }
   .title-container .app-title {
     padding: 15px;
     font-size: 35px;
   }
   .form-container {
-    padding-top: 50px;
-    height: auto;
-  }
-}
-@media (min-height: 950px){
-  .main{
-    min-height: 70%;
+    padding-top: 30px;
   }
 }
