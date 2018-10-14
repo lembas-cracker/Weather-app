@@ -1,13 +1,11 @@
  {
-  "condition": {
-    "few clouds": {"x": 0, "y": 0},
-    "scattered clouds": {"x": 1, "y": 0},
-    "broken clouds": {"x": 2, "y": 0},
-    "thunderstorm": {"x": 3, "y": 0},
-    "rain": {"x": 0, "y": 1},
-    "shower rain": {"x": 1, "y": 1},
-    "snow": {"x": 2, "y": 1},
-    "clear sky": {"x": 2, "y": 2},
-    "mist": {"x": 1, "y": 3}
-  }
+  "few clouds": {"x": 0, "y": 0},
+  "scattered clouds": {"x": 1, "y": 0},
+  "broken clouds": {"x": 2, "y": 0},
+  "thunderstorm": {"x": 3, "y": 0},
+  "rain": {"x": 0, "y": 1},
+  "shower rain": {"x": 1, "y": 1},
+  "snow": {"x": 2, "y": 1},
+  "clear sky": {"x": 2, "y": 2},
+  "mist": {"x": 1, "y": 3}
 }

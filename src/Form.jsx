@@ -30,7 +30,6 @@ export default class Form extends React.Component {
       }
       const cityCall = await fetch(process.env.PUBLIC_URL + "/cities/" + countryCode.toLowerCase() + ".json");
       const cities = await cityCall.json();
-      console.log(cities);
       this.setState({
         cities: cities
       })
