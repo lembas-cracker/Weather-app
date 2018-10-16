@@ -7,13 +7,6 @@ const countries = countryCodes.map(c => {
   return c.name
 })
 
-//When a user starts typing a city, it should autocmplete cities from a typed country.
-  // + Listen for an onFocus event on the city input.
-  // + Get the country from the first input.
-  // + Get a country code.
-  // + Get a city list for a country code.
-  //Set possibleValues={the city list that we got} in the city input
-
 export default class Form extends React.Component {
   state = {
     cities: []

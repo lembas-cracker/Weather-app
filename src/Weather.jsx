@@ -4,7 +4,6 @@ import spriteCoordinates from './cloud-sprites'
 function getSpriteStyle(condition) {
   const x = spriteCoordinates[condition].x
   const y = spriteCoordinates[condition].y
-
   return {
     backgroundPosition: "top -"+ y*60 + "px left -" + x*60 + "px"
   }
@@ -24,13 +23,16 @@ const Weather = props => (
         <span className='weather__value'> {Math.round(props.temperature)}° </span>
       </p>}
     {props.description &&
-      <p className='weather__key'>
+      <div className='weather__key'>
         Conditions:
-        <span className='weather__value'>
-        <div className='weather__icon' style={getSpriteStyle(props.description)}></div> {props.description} </span>
-      </p>}
+        <div className="d-inline-block weather__condition-container">
+          <div className='weather__icon' style={getSpriteStyle(props.description)}></div>
+          <span className='weather__condition-value'>{props.description}</span>
+        </div>
+      </div>}
     {props.error && <p className='weather__error'>{props.error}</p>}
   </div>
 )
+
 
 export default Weather

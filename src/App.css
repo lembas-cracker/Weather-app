@@ -27,11 +27,15 @@
   font-family: 'Roboto Slab', serif;
 }
 
-.form-container {
+.form-container, .forecast-container {
   background-color: #273444;
   padding-top: 100px;
   padding-left: 50px;
   height: 90vh;
+}
+.forecast-container {
+  color: white;
+  display: none;
 }
 input[type="text"] {
   background-color: transparent;
@@ -81,12 +85,21 @@ button:active {
 
 .weather__key:last-child {
   border: 0;
+  padding-top: 10px;
 }
 
 .weather__value {
   color: #fff;
   font-weight: 200;
 }
+.weather__condition-value {
+  display: none;
+}
+
+.weather__condition-container:hover .weather__condition-value {
+  display: inline-block;
+}
+
 .weather__error {
   color: #fff;
 }
@@ -96,7 +109,7 @@ button:active {
   display: inline-block;
   height: 60px;
   width: 60px;
-  margin-bottom: -10px;
+  vertical-align: middle;
 }
 
 .autocomplete {
