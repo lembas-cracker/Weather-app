@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 
-export class ForecastContainer extends Component {
+
+export default class ForecastContainer extends React.Component {
   constructor () {
     super()
     this.state = {
@@ -16,18 +17,19 @@ export class ForecastContainer extends Component {
 
   render () {
     return (
-      <div className='WeatherContainer container'>
+      <div className='forecast-container container'>
         <div className='row no-gutters'>
           <div className='col'>
             {this.state.shouldShowLocation ? <ForecastLocation /> : null}
           </div>
         </div>
         <div className='row no-gutters'>
-          <ForecastDay clickHandler={this.showLocation.bind(this)} />
-          <ForecastDay />
-          <ForecastDay dayName='Monday' />
-          <ForecastDay dayName='Tuesday' />
-          <ForecastDay />
+            <button clickHandler={this.showLocation.bind(this)}></button>
+            <ForecastDay dayName='Day-1' />
+            <ForecastDay dayName='Day-2' />
+            <ForecastDay dayName='Day-3' />
+            <ForecastDay dayName='Day-4' />
+            <ForecastDay dayName='Day-5' />
         </div>
       </div>
     )
@@ -37,7 +39,8 @@ export class ForecastContainer extends Component {
 function ForecastDay (props) {
   return (
     <div className='col single-container' onClick={props.clickHandler}>
-      {props.dayName}: 11C
+      {props.dayName}:
+      <div className='col-4 weather-block'></div>
     </div>
   )
 }
@@ -58,10 +61,11 @@ class ForecastLocation extends Component {
         return results.json()
       })
       .then(data => {
-        let city = data.city
+        const city = data.city
         this.setState({
           city: city
         })
+        console.log(data);
       })
   }
 

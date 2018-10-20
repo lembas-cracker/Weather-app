@@ -1,7 +1,7 @@
 import React from 'react'
 import spriteCoordinates from './cloud-sprites'
 
-function getSpriteStyle(condition) {
+export function getSpriteStyle(condition) {
   const x = spriteCoordinates[condition].x
   const y = spriteCoordinates[condition].y
   return {

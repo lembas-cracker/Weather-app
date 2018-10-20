@@ -1,5 +1,6 @@
 import React from 'react'
 import Title from './Title.jsx'
+import ForecastContainer from './ForecastContainer.jsx'
 
 export default class PageContainer extends React.Component {
   render() {
@@ -10,6 +11,7 @@ export default class PageContainer extends React.Component {
             <div className='col-md-5 form-container'>
               {this.props.children}
             </div>
+            <ForecastContainer />
           </div>
         </div>
     </div>
