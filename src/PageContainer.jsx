@@ -1,19 +1,19 @@
-import React from 'react'
-import Title from './Title.jsx'
-import ForecastContainer from './ForecastContainer.jsx'
+import React from "react";
+import Title from "./Title.jsx";
+import ForecastContainer from "./ForecastContainer.jsx";
 
 export default class PageContainer extends React.Component {
   render() {
-    return <div className="wrapper">
+    return (
+      <div className="wrapper">
         <div className="container main-container">
           <div className="row justify-content-center">
             <Title />
-            <div className='col-md-5 form-container'>
-              {this.props.children}
-            </div>
+            <div className="col-md-5 form-container">{this.props.children}</div>
             <ForecastContainer />
           </div>
         </div>
-    </div>
+      </div>
+    );
   }
 }

@@ -24,7 +24,7 @@ export default class ForecastContainer extends React.Component {
           </div>
         </div>
         <div className='row no-gutters'>
-            <button clickHandler={this.showLocation.bind(this)}></button>
+            <button onClick={this.showLocation.bind(this)}></button>
             <ForecastDay dayName='Day-1' />
             <ForecastDay dayName='Day-2' />
             <ForecastDay dayName='Day-3' />
