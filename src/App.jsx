@@ -1,16 +1,21 @@
 import React, { Component } from "react";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "./Autocomplete.jsx";
 import Form from "./Form.jsx";
 import Weather from "./Weather.jsx";
-import "./Autocomplete.jsx";
 import PageContainer from "./PageContainer.jsx";
+import ForecastContainer from "./ForecastContainer.jsx";
 import { getCountryCode } from "./location-functions.js";
+import arrowdown from "./arrowdown.svg";
+import ContactInfo from "./ContactInfo.jsx";
 
 export class App extends Component {
   state = {
     loading: false,
-    isMetricActive: true
+    isMetricActive: true,
+    arrowIcon: false,
+    forecastIsHidden: true
   };
 
   toggleActive = () => {
@@ -19,10 +24,18 @@ export class App extends Component {
     });
   };
 
+  toggleForecastHidden = () => {
+    this.setState({
+      forecastIsHidden: !this.state.forecastIsHidden
+    });
+  };
+
   async getWeather(e) {
     e.preventDefault();
-    const city = e.target.elements.city.value;
-    const country = e.target.elements.country.value;
+    // const city = e.target.elements.city.value;
+    // const country = e.target.elements.country.value;
+    const country = "United States";
+    const city = "New York";
     const countryCode = getCountryCode(country);
     if (city && countryCode) {
       this.setState({
@@ -36,10 +49,11 @@ export class App extends Component {
         this.setState({
           temperature: data.main.temp,
           city: data.name,
-          country: data.sys.country,
+          countryCode: data.sys.country,
           description: data.weather[0].description,
           error: "",
-          loading: false
+          loading: false,
+          arrowIcon: true
         });
         return;
       }
@@ -48,9 +62,10 @@ export class App extends Component {
     this.setState({
       temperature: undefined,
       city: undefined,
-      country: undefined,
+      countryCode: undefined,
       description: undefined,
-      error: "Location doesn't exist or not found."
+      error: "Location doesn't exist or not found.",
+      arrowIcon: false
     });
   }
 
@@ -62,13 +77,28 @@ export class App extends Component {
           <Weather
             temperature={this.state.temperature}
             city={this.state.city}
-            country={this.state.country}
+            countryCode={this.state.countryCode}
             description={this.state.description}
             error={this.state.error}
             isMetricActive={this.state.isMetricActive}
             toggleActive={this.toggleActive}
           />
+          {this.state.arrowIcon ? (
+            <div className="flex-grow-1 d-flex flex-column align-items-center justify-content-end">
+              <span className="fiveDayForecast">5-day weather forecast</span>
+              <img
+                src={arrowdown}
+                alt=""
+                className="arrow-down"
+                onClick={this.toggleForecastHidden.bind(this)}
+              />
+            </div>
+          ) : null}
         </PageContainer>
+        {!this.state.forecastIsHidden ? (
+          <ForecastContainer city={this.state.city} countryCode={this.state.countryCode} />
+        ) : null}
+        <ContactInfo />
       </div>
     );
   }

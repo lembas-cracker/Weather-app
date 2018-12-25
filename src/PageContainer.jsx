@@ -1,6 +1,5 @@
 import React from "react";
 import Title from "./Title.jsx";
-import ForecastContainer from "./ForecastContainer.jsx";
 
 export default class PageContainer extends React.Component {
   render() {
@@ -9,8 +8,7 @@ export default class PageContainer extends React.Component {
         <div className="container main-container">
           <div className="row justify-content-center">
             <Title />
-            <div className="col-md-5 form-container">{this.props.children}</div>
-            <ForecastContainer />
+            <div className="col-md-5 form-container d-flex flex-column">{this.props.children}</div>
           </div>
         </div>
       </div>

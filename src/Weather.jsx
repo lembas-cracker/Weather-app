@@ -23,18 +23,17 @@ function formatTemperature(temperature, isMetricActive) {
 const Weather = props => (
   <div className="weather__info">
     {props.city &&
-      props.country && (
+      props.countryCode && (
         <p className="weather__key">
-          Location:
+          Location:{" "}
           <span className="weather__value">
-            {" "}
-            {props.city}, {props.country}
+            {props.city}, {props.countryCode}
           </span>
         </p>
       )}
     {props.temperature && (
-      <p className="weather__key">
-        Temperature: {""}
+      <div className="weather__key">
+        Temperature:{" "}
         <span className="weather__value">
           {formatTemperature(props.temperature, props.isMetricActive)}°
         </span>
@@ -42,7 +41,7 @@ const Weather = props => (
           isMetricActive={props.isMetricActive}
           toggleActive={props.toggleActive}
         />
-      </p>
+      </div>
     )}
     {props.description && (
       <div className="weather__key">

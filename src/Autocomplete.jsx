@@ -1,20 +1,23 @@
-import React from 'react'
-import Autosuggest from 'react-autosuggest';
-import './Autocomplete.css';
-import pin from './pin.svg';
-import { caseEqual } from './location-functions.js';
+import React from "react";
+import Autosuggest from "react-autosuggest";
+import "./Autocomplete.css";
+import pin from "./pin.svg";
+import { caseEqual } from "./location-functions.js";
 
 const getSuggestions = (allSuggestions, value) => {
   const inputValue = value.trim().toLowerCase();
 
-  return inputValue.length === 0 ? [] : allSuggestions.filter(suggestion =>
-    suggestion.toLowerCase().startsWith(inputValue) && !caseEqual(suggestion, inputValue)
-  );
+  return inputValue.length === 0
+    ? []
+    : allSuggestions.filter(
+        suggestion =>
+          suggestion.toLowerCase().startsWith(inputValue) && !caseEqual(suggestion, inputValue)
+      );
 };
 
 const renderSuggestion = suggestion => (
   <div>
-    <img src={pin} alt="" className='pin-image'/>
+    <img src={pin} alt="" className="pin-image" />
     {suggestion}
   </div>
 );
@@ -24,7 +27,7 @@ export default class Autocomplete extends React.Component {
     super();
 
     this.state = {
-      value: '',
+      value: "",
       suggestions: []
     };
   }
