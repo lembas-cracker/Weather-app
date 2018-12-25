@@ -1,9 +1,12 @@
 {
-  "main.css": "static/css/main.78d2b59f.css",
-  "main.css.map": "static/css/main.78d2b59f.css.map",
-  "main.js": "static/js/main.d290731c.js",
-  "main.js.map": "static/js/main.d290731c.js.map",
+  "main.css": "static/css/main.a94b8c04.css",
+  "main.css.map": "static/css/main.a94b8c04.css.map",
+  "main.js": "static/js/main.684c5dc0.js",
+  "main.js.map": "static/js/main.684c5dc0.js.map",
+  "static\\media\\arrowdown.svg": "static/media/arrowdown.ff6455ff.svg",
   "static\\media\\bg.jpg": "static/media/bg.b6796c73.jpg",
+  "static\\media\\github.ico": "static/media/github.347bb248.ico",
+  "static\\media\\openweathermap-ico.png": "static/media/openweathermap-ico.19f5e3c9.png",
   "static\\media\\pin.svg": "static/media/pin.6cb449a5.svg",
   "static\\media\\weatherIcons.png": "static/media/weatherIcons.88af2d2f.png"
 }
