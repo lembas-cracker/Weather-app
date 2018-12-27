@@ -34,8 +34,6 @@ export class App extends Component {
     e.preventDefault();
     const city = e.target.elements.city.value;
     const country = e.target.elements.country.value;
-    const country = "United States";
-    const city = "New York";
     const countryCode = getCountryCode(country);
     if (city && countryCode) {
       this.setState({
