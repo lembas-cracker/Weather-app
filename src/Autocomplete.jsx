@@ -25,7 +25,6 @@ const renderSuggestion = suggestion => (
 export default class Autocomplete extends React.Component {
   constructor() {
     super();
-
     this.state = {
       value: "",
       suggestions: []

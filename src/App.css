@@ -156,7 +156,8 @@ button:active {
   color: #fff;
   font-weight: 200;
 }
-.weather__condition-value {
+.weather__condition-value,
+.weather__forecast-value {
   display: none;
 }
 
@@ -168,6 +169,14 @@ button:active {
   background-color: rgba(236, 236, 236, 0.8);
   padding: 0px 5px 5px 5px;
   vertical-align: text-top;
+}
+.forecast-weather__container:hover .weather__forecast-value {
+  display: inline-block;
+  border-radius: 5px;
+  color: #273444;
+  font-size: 15px;
+  background-color: rgba(236, 236, 236, 0.8);
+  padding: 0px 5px 5px 5px;
 }
 
 .weather__error {

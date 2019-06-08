@@ -15,22 +15,21 @@ export function getSpriteStyle(condition) {
   };
 }
 
-function formatTemperature(temperature, isMetricActive) {
+export function formatTemperature(temperature, isMetricActive) {
   const tempInCurrentUnit = isMetricActive ? temperature : (temperature * 9) / 5 + 32;
   return Math.round(tempInCurrentUnit);
 }
 
 const Weather = props => (
   <div className="weather__info">
-    {props.city &&
-      props.countryCode && (
-        <p className="weather__key">
-          Location:{" "}
-          <span className="weather__value">
-            {props.city}, {props.countryCode}
-          </span>
-        </p>
-      )}
+    {props.city && props.countryCode && (
+      <p className="weather__key">
+        Location:{" "}
+        <span className="weather__value">
+          {props.city}, {props.countryCode}
+        </span>
+      </p>
+    )}
     {props.temperature && (
       <div className="weather__key">
         Temperature:{" "}

@@ -94,7 +94,11 @@ export class App extends Component {
           ) : null}
         </PageContainer>
         {!this.state.forecastIsHidden ? (
-          <ForecastContainer city={this.state.city} countryCode={this.state.countryCode} />
+          <ForecastContainer
+            city={this.state.city}
+            countryCode={this.state.countryCode}
+            isMetricActive={this.state.isMetricActive}
+          />
         ) : null}
         <ContactInfo />
       </div>

@@ -1,5 +1,6 @@
 import React from "react";
 import { getSpriteStyle } from "./Weather.jsx";
+import { formatTemperature } from "./Weather.jsx";
 
 function getMinMaxTemperatureForDay(list, dayOfMonth) {
   const filteredList = list.filter(element => new Date(element.dt * 1000).getDate() === dayOfMonth);
@@ -101,6 +102,7 @@ export default class ForecastContainer extends React.Component {
             <ForecastDay
               dayName={getDayOfWeekName(1)}
               description={this.state.forecast[0].description}
+              isMetricActive={this.props.isMetricActive}
               temperature={{
                 min: this.state.forecast[0].minTemperature,
                 max: this.state.forecast[0].maxTemperature
@@ -109,6 +111,7 @@ export default class ForecastContainer extends React.Component {
             <ForecastDay
               dayName={getDayOfWeekName(2)}
               description={this.state.forecast[1].description}
+              isMetricActive={this.props.isMetricActive}
               temperature={{
                 min: this.state.forecast[1].minTemperature,
                 max: this.state.forecast[1].maxTemperature
@@ -117,6 +120,7 @@ export default class ForecastContainer extends React.Component {
             <ForecastDay
               dayName={getDayOfWeekName(3)}
               description={this.state.forecast[2].description}
+              isMetricActive={this.props.isMetricActive}
               temperature={{
                 min: this.state.forecast[2].minTemperature,
                 max: this.state.forecast[2].maxTemperature
@@ -125,6 +129,7 @@ export default class ForecastContainer extends React.Component {
             <ForecastDay
               dayName={getDayOfWeekName(4)}
               description={this.state.forecast[3].description}
+              isMetricActive={this.props.isMetricActive}
               temperature={{
                 min: this.state.forecast[3].minTemperature,
                 max: this.state.forecast[3].maxTemperature
@@ -133,6 +138,7 @@ export default class ForecastContainer extends React.Component {
             <ForecastDay
               dayName={getDayOfWeekName(5)}
               description={this.state.forecast[4].description}
+              isMetricActive={this.props.isMetricActive}
               temperature={{
                 min: this.state.forecast[4].minTemperature,
                 max: this.state.forecast[4].maxTemperature
@@ -150,13 +156,20 @@ const ForecastDay = props => {
     <div className="col single-container">
       <span className="forecast-dayName">{props.dayName}</span>
       <div className="col weather-block">
-        <div
-          className="weather__icon forecast-weather__icon"
-          style={getSpriteStyle(props.description)}
-        />
-        <span className="forecast-temperature forecast-temp-min">{props.temperature.min}°</span>
-        <span className="forecast-temperature forecast-temp-max">{props.temperature.max}°</span>
+        <div className="d-inline-block forecast-weather__container">
+          <div
+            className="forecast-weather__icon weather__icon"
+            style={getSpriteStyle(props.description)}
+          />
+        </div>
+        <span className="forecast-temperature forecast-temp-min">
+          {formatTemperature(props.temperature.min, props.isMetricActive)}°
+        </span>
+        <span className="forecast-temperature forecast-temp-max">
+          {formatTemperature(props.temperature.max, props.isMetricActive)}°
+        </span>
       </div>
+      <span className="weather__forecast-value">{props.description}</span>
     </div>
   );
 };
