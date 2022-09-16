@@ -4,7 +4,7 @@
   "private": true,
   "homepage": "http://lembas-cracker.github.io/Weather-app",
   "dependencies": {
-    "bootstrap": "^4.1.1",
+    "bootstrap": "^4.3.1",
     "jquery": "^3.3.1",
     "progressbar.js": "^1.0.1",
     "react": "^16.3.2",
